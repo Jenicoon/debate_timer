@@ -31,11 +31,11 @@
         function updateDisplay() {
             const minsPro = Math.floor(timePro / 60);
             const secsPro = timePro % 60;
-            document.getElementById('time_pro').textContent = `Pro Time: ${minsPro}:${secsPro < 10 ? '0' : ''}${secsPro}`;
+            document.getElementById('time_pro').textContent = `찬성 측 남은 시간: ${minsPro}:${secsPro < 10 ? '0' : ''}${secsPro}`;
 
             const minsCon = Math.floor(timeCon / 60);
             const secsCon = timeCon % 60;
-            document.getElementById('time_con').textContent = `Con Time: ${minsCon}:${secsCon < 10 ? '0' : ''}${secsCon}`;
+            document.getElementById('time_con').textContent = `반대 측 남은 시간: ${minsCon}:${secsCon < 10 ? '0' : ''}${secsCon}`;
         }
 
         function startPro() {
