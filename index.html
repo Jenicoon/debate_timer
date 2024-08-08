@@ -17,8 +17,8 @@
         <div class="time" id="time_pro">찬성 측 남은 시간: 12:00</div>
         <div class="time" id="time_con">반대 측 남은 시간: 12:00</div>
     </div>
-    <button onclick="startPro()">찬성</button>
-    <button onclick="startCon()">반대</button>
+    <button id="btn_pro" onclick="startPro()">찬성</button>
+    <button id="btn_con" onclick="startCon()">반대</button>
     <button onclick="stopTimer()">정지</button>
 
     <script>
@@ -39,10 +39,14 @@
         }
 
         function startPro() {
+            if (runningPro) {
+                return;
+            }
             if (runningCon) {
                 stopTimer();
             }
             runningPro = true;
+            document.getElementById('btn_pro').disabled = true;
             timerInterval = setInterval(() => {
                 if (timePro > 0) {
                     timePro--;
@@ -55,10 +59,14 @@
         }
 
         function startCon() {
+            if (runningCon) {
+                return;
+            }
             if (runningPro) {
                 stopTimer();
             }
             runningCon = true;
+            document.getElementById('btn_con').disabled = true;
             timerInterval = setInterval(() => {
                 if (timeCon > 0) {
                     timeCon--;
@@ -74,6 +82,8 @@
             clearInterval(timerInterval);
             runningPro = false;
             runningCon = false;
+            document.getElementById('btn_pro').disabled = false;
+            document.getElementById('btn_con').disabled = false;
         }
 
         updateDisplay();
