@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debate Timer</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        h1 { margin-top: 20px; }
+        .time { font-size: 24px; margin: 10px; }
+        button { font-size: 18px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>토론 타이머</h1>
+    <div>
+        <div class="time" id="time_pro">Pro Time: 12:00</div>
+        <div class="time" id="time_con">Con Time: 12:00</div>
+    </div>
+    <button onclick="startPro()">찬성</button>
+    <button onclick="startCon()">반대</button>
+    <button onclick="stopTimer()">정지</button>
+
+    <script>
+        let timePro = 12 * 60;
+        let timeCon = 12 * 60;
+        let timerInterval;
+        let runningPro = false;
+        let runningCon = false;
+
+        function updateDisplay() {
+            const minsPro = Math.floor(timePro / 60);
+            const secsPro = timePro % 60;
+            document.getElementById('time_pro').textContent = `Pro Time: ${minsPro}:${secsPro < 10 ? '0' : ''}${secsPro}`;
+
+            const minsCon = Math.floor(timeCon / 60);
+            const secsCon = timeCon % 60;
+            document.getElementById('time_con').textContent = `Con Time: ${minsCon}:${secsCon < 10 ? '0' : ''}${secsCon}`;
+        }
+
+        function startPro() {
+            if (runningCon) {
+                stopTimer();
+            }
+            runningPro = true;
+            timerInterval = setInterval(() => {
+                if (timePro > 0) {
+                    timePro--;
+                    updateDisplay();
+                } else {
+                    alert("찬성 시간 종료!");
+                    stopTimer();
+                }
+            }, 1000);
+        }
+
+        function startCon() {
+            if (runningPro) {
+                stopTimer();
+            }
+            runningCon = true;
+            timerInterval = setInterval(() => {
+                if (timeCon > 0) {
+                    timeCon--;
+                    updateDisplay();
+                } else {
+                    alert("반대 시간 종료!");
+                    stopTimer();
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            runningPro = false;
+            runningCon = false;
+        }
+
+        updateDisplay();
+    </script>
+</body>
+</html>
