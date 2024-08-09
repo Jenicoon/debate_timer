@@ -4,26 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Debate Timer</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        h1 { margin-top: 20px; }
-        .time { font-size: 24px; margin: 10px; }
-        button { font-size: 18px; margin: 5px; }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- CSS 파일 연결 -->
 </head>
 <body>
-    <h1>토론 타이머</h1>
-    <div>
-        <div class="time" id="time_pro">찬성 측 남은 시간: 12:00</div>
-        <div class="time" id="time_con">반대 측 남은 시간: 12:00</div>
+    <audio id="bell" src="bell.mp3" preload="auto"></audio>
+    <audio id="proallover" src="proallover.mp3" preload="auto"></audio>
+    <audio id="pro30s" src="pro30s.mp3" preload="auto"></audio>
+    <audio id="proover" src="proover.mp3" preload="auto"></audio>
+    <audio id="conallover" src="conallover.mp3" preload="auto"></audio>
+    <audio id="con30s" src="con30s.mp3" preload="auto"></audio>
+    <audio id="conover" src="conover.mp3" preload="auto"></audio>
+    
+    <div class="header">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>자유토론</h1>
+    </div>
+    
+
+    <div class="container">
+        <div class="time pro" id="time_pro">
+            <div class="title">찬성</div>
+            <div class="time-info">총 남은 시간<br><span id="total_time_pro">12:00</span></div>
+            <div class="time-info">발언 시간<br><span id="speaking_time_pro">1:30</span></div>
+        </div>
+        <div class="time con" id="time_con">
+            <div class="title">반대</div>
+            <div class="time-info">총 남은 시간<br><span id="total_time_con">12:00</span></div>
+            <div class="time-info">발언 시간<br><span id="speaking_time_con">1:30</span></div>
+        </div>
     </div>
     <button id="btn_pro" onclick="startPro()">찬성</button>
     <button id="btn_con" onclick="startCon()">반대</button>
     <button onclick="stopTimer()">정지</button>
+    <button onclick="resetTimer()">초기화</button>
 
     <script>
         let timePro = 12 * 60;
         let timeCon = 12 * 60;
+        let speakingTimePro = 90; // 발언 시간 (90초)
+        let speakingTimeCon = 90; // 발언 시간 (90초)
         let timerInterval;
         let runningPro = false;
         let runningCon = false;
@@ -31,49 +50,87 @@
         function updateDisplay() {
             const minsPro = Math.floor(timePro / 60);
             const secsPro = timePro % 60;
-            document.getElementById('time_pro').textContent = `찬성 측 남은 시간: ${minsPro}:${secsPro < 10 ? '0' : ''}${secsPro}`;
+            document.getElementById('total_time_pro').textContent = `${minsPro}:${secsPro < 10 ? '0' : ''}${secsPro}`;
 
             const minsCon = Math.floor(timeCon / 60);
             const secsCon = timeCon % 60;
-            document.getElementById('time_con').textContent = `반대 측 남은 시간: ${minsCon}:${secsCon < 10 ? '0' : ''}${secsCon}`;
+            document.getElementById('total_time_con').textContent = `${minsCon}:${secsCon < 10 ? '0' : ''}${secsCon}`;
+
+            const minsSpeakingPro = Math.floor(speakingTimePro / 60);
+            const secsSpeakingPro = speakingTimePro % 60;
+            document.getElementById('speaking_time_pro').textContent = `${minsSpeakingPro}:${secsSpeakingPro < 10 ? '0' : ''}${secsSpeakingPro}`;
+
+            const minsSpeakingCon = Math.floor(speakingTimeCon / 60);
+            const secsSpeakingCon = speakingTimeCon % 60;
+            document.getElementById('speaking_time_con').textContent = `${minsSpeakingCon}:${secsSpeakingCon < 10 ? '0' : ''}${secsSpeakingCon}`;
+
+                // 3분 남았을 때 음원 재생
+            if (timePro === 180) {
+                document.getElementById('bell').play();
+            }
+            if (timeCon === 60) {
+                document.getElementById('bell').play();
+            }
         }
 
         function startPro() {
             if (runningPro) {
-                return;
+                return; // 이미 실행 중이면 아무 작업도 하지 않음
             }
             if (runningCon) {
                 stopTimer();
             }
             runningPro = true;
-            document.getElementById('btn_pro').disabled = true;
+            document.getElementById('btn_pro').disabled = true; // 버튼 비활성화
             timerInterval = setInterval(() => {
                 if (timePro > 0) {
                     timePro--;
+                    speakingTimePro--; // 발언 시간 줄어들도록 수정
                     updateDisplay();
                 } else {
-                    alert("찬성 시간 종료!");
                     stopTimer();
+                    document.getElementById('proallover').play();
+                }
+
+                if (speakingTimePro === 30) {
+                    document.getElementById('pro30s').play();
+                }
+
+                if (speakingTimePro <=0) {
+                    speakingTimePro = 0;
+                    stopTimer();
+                    document.getElementById('proover').play();
                 }
             }, 1000);
         }
 
         function startCon() {
             if (runningCon) {
-                return;
+                return; // 이미 실행 중이면 아무 작업도 하지 않음
             }
             if (runningPro) {
                 stopTimer();
             }
             runningCon = true;
-            document.getElementById('btn_con').disabled = true;
+            document.getElementById('btn_con').disabled = true; // 버튼 비활성화
             timerInterval = setInterval(() => {
                 if (timeCon > 0) {
                     timeCon--;
+                    speakingTimeCon--; // 발언 시간 줄어들도록 수정
                     updateDisplay();
                 } else {
-                    alert("반대 시간 종료!");
                     stopTimer();
+                    document.getElementById('conallover').play();
+                }
+
+                if (speakingTimeCon === 30) {
+                    document.getElementById('con30s').play();
+                }
+
+                if (speakingTimeCon <=0) {
+                    speakingTimeCon = 0;
+                    stopTimer();
+                    document.getElementById('conover').play();
                 }
             }, 1000);
         }
@@ -82,11 +139,28 @@
             clearInterval(timerInterval);
             runningPro = false;
             runningCon = false;
-            document.getElementById('btn_pro').disabled = false;
-            document.getElementById('btn_con').disabled = false;
+            document.getElementById('btn_pro').disabled = false; // 버튼 활성화
+            document.getElementById('btn_con').disabled = false; // 버튼 활성화
+            speakingTimePro = 90; // 발언 시간 초기화
+            speakingTimeCon = 90; // 발언 시간 초기화
+            updateDisplay(); // 화면 업데이트
+        }
+
+        function resetTimer() {
+            stopTimer(); // 타이머 정지
+            timePro = 12 * 60; // 찬성 시간 초기화
+            timeCon = 12 * 60; // 반대 시간 초기화
+            speakingTimePro = 90; // 발언 시간 초기화
+            speakingTimeCon = 90; // 발언 시간 초기화
+            updateDisplay(); // 화면 업데이트
         }
 
         updateDisplay();
     </script>
+
+    <div id="footer-text">
+        <p>1. 양 측 총 남은 시간이 3분, 1분 남았을 시에 종소리가 울립니다.</p>
+        <p>2. 양 측 발언 시간이 30초가 남았을 때 안내 소리가 나옵니다.</p>
+    </div>
 </body>
 </html>
