@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Debate Timer</title>
-    <link rel="stylesheet" href="styles.css"> <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <audio id="bell" src="bell.mp3" preload="auto"></audio>
@@ -41,8 +41,8 @@
     <script>
         let timePro = 12 * 60;
         let timeCon = 12 * 60;
-        let speakingTimePro = 90; // 발언 시간 (90초)
-        let speakingTimeCon = 90; // 발언 시간 (90초)
+        let speakingTimePro = 90;
+        let speakingTimeCon = 90;
         let timerInterval;
         let runningPro = false;
         let runningCon = false;
@@ -64,7 +64,6 @@
             const secsSpeakingCon = speakingTimeCon % 60;
             document.getElementById('speaking_time_con').textContent = `${minsSpeakingCon}:${secsSpeakingCon < 10 ? '0' : ''}${secsSpeakingCon}`;
 
-                // 3분 남았을 때 음원 재생
             if (timePro === 180) {
                 document.getElementById('bell').play();
             }
@@ -75,17 +74,17 @@
 
         function startPro() {
             if (runningPro) {
-                return; // 이미 실행 중이면 아무 작업도 하지 않음
+                return;
             }
             if (runningCon) {
                 stopTimer();
             }
             runningPro = true;
-            document.getElementById('btn_pro').disabled = true; // 버튼 비활성화
+            document.getElementById('btn_pro').disabled = true;
             timerInterval = setInterval(() => {
                 if (timePro > 0) {
                     timePro--;
-                    speakingTimePro--; // 발언 시간 줄어들도록 수정
+                    speakingTimePro--;
                     updateDisplay();
                 } else {
                     stopTimer();
@@ -106,17 +105,17 @@
 
         function startCon() {
             if (runningCon) {
-                return; // 이미 실행 중이면 아무 작업도 하지 않음
+                return;
             }
             if (runningPro) {
                 stopTimer();
             }
             runningCon = true;
-            document.getElementById('btn_con').disabled = true; // 버튼 비활성화
+            document.getElementById('btn_con').disabled = true;
             timerInterval = setInterval(() => {
                 if (timeCon > 0) {
                     timeCon--;
-                    speakingTimeCon--; // 발언 시간 줄어들도록 수정
+                    speakingTimeCon--;
                     updateDisplay();
                 } else {
                     stopTimer();
@@ -139,20 +138,20 @@
             clearInterval(timerInterval);
             runningPro = false;
             runningCon = false;
-            document.getElementById('btn_pro').disabled = false; // 버튼 활성화
-            document.getElementById('btn_con').disabled = false; // 버튼 활성화
-            speakingTimePro = 90; // 발언 시간 초기화
-            speakingTimeCon = 90; // 발언 시간 초기화
-            updateDisplay(); // 화면 업데이트
+            document.getElementById('btn_pro').disabled = false;
+            document.getElementById('btn_con').disabled = false;
+            speakingTimePro = 90;
+            speakingTimeCon = 90;
+            updateDisplay();
         }
 
         function resetTimer() {
-            stopTimer(); // 타이머 정지
-            timePro = 12 * 60; // 찬성 시간 초기화
-            timeCon = 12 * 60; // 반대 시간 초기화
-            speakingTimePro = 90; // 발언 시간 초기화
-            speakingTimeCon = 90; // 발언 시간 초기화
-            updateDisplay(); // 화면 업데이트
+            stopTimer();
+            timePro = 12 * 60;
+            timeCon = 12 * 60;
+            speakingTimePro = 90;
+            speakingTimeCon = 90;
+            updateDisplay();
         }
 
         updateDisplay();
