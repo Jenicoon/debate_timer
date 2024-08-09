@@ -33,10 +33,12 @@
             <div class="time-info">발언 시간<br><span id="speaking_time_con">1:30</span></div>
         </div>
     </div>
-    <button id="btn_pro" onclick="startPro()">찬성</button>
+    <button id="btn_pro" onclick="previous()">이전</button>
+    <button onclick="startPro()">시작</button>
     <button id="btn_con" onclick="startCon()">반대</button>
     <button onclick="stopTimer()">정지</button>
     <button onclick="resetTimer()">초기화</button>
+    <button onclick="next()">다음</button>
 
     <script>
         let timePro = 12 * 60;
@@ -158,6 +160,14 @@
             speakingTimePro = 90;
             speakingTimeCon = 90;
             updateDisplay();
+        }
+
+                function previous() {
+            window.location.href = 'debate2-2.html';
+        }
+
+        function next() {
+            window.location.href = 'debate4-1.html';
         }
 
         updateDisplay();
