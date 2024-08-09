@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한토막 자유토론 타이머</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="bell" src="bell.mp3" preload="auto"></audio>
+    <audio id="proallover" src="proallover.mp3" preload="auto"></audio>
+    <audio id="pro30s" src="pro30s.mp3" preload="auto"></audio>
+    <audio id="proover" src="proover.mp3" preload="auto"></audio>
+    <audio id="conallover" src="conallover.mp3" preload="auto"></audio>
+    <audio id="con30s" src="con30s.mp3" preload="auto"></audio>
+    <audio id="conover" src="conover.mp3" preload="auto"></audio>
+    
+    <div class="header">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>자유토론</h1>
+    </div>
+    
+
+    <div class="container">
+        <div class="time pro" id="time_pro">
+            <div class="title">찬성</div>
+            <div class="time-info">총 남은 시간<br><span id="total_time_pro">12:00</span></div>
+            <div class="time-info">발언 시간<br><span id="speaking_time_pro">1:30</span></div>
+        </div>
+        <div class="time con" id="time_con">
+            <div class="title">반대</div>
+            <div class="time-info">총 남은 시간<br><span id="total_time_con">12:00</span></div>
+            <div class="time-info">발언 시간<br><span id="speaking_time_con">1:30</span></div>
+        </div>
+    </div>
+    <button id="btn_pro" onclick="previous()">이전</button>
+    <button onclick="startPro()">찬성</button>
+    <button id="btn_con" onclick="startCon()">반대</button>
+    <button onclick="stopTimer()">정지</button>
+    <button onclick="resetTimer()">초기화</button>
+    <button onclick="next()">다음</button>
+
+    <script>
+        let timePro = 12 * 60;
+        let timeCon = 12 * 60;
+        let speakingTimePro = 90;
+        let speakingTimeCon = 90;
+        let timerInterval;
+        let runningPro = false;
+        let runningCon = false;
+
+        function updateDisplay() {
+            const minsPro = Math.floor(timePro / 60);
+            const secsPro = timePro % 60;
+            document.getElementById('total_time_pro').textContent = `${minsPro}:${secsPro < 10 ? '0' : ''}${secsPro}`;
+
+            const minsCon = Math.floor(timeCon / 60);
+            const secsCon = timeCon % 60;
+            document.getElementById('total_time_con').textContent = `${minsCon}:${secsCon < 10 ? '0' : ''}${secsCon}`;
+
+            const minsSpeakingPro = Math.floor(speakingTimePro / 60);
+            const secsSpeakingPro = speakingTimePro % 60;
+            document.getElementById('speaking_time_pro').textContent = `${minsSpeakingPro}:${secsSpeakingPro < 10 ? '0' : ''}${secsSpeakingPro}`;
+
+            const minsSpeakingCon = Math.floor(speakingTimeCon / 60);
+            const secsSpeakingCon = speakingTimeCon % 60;
+            document.getElementById('speaking_time_con').textContent = `${minsSpeakingCon}:${secsSpeakingCon < 10 ? '0' : ''}${secsSpeakingCon}`;
+
+            if (timePro === 180) {
+                document.getElementById('bell').play();
+            }
+            if (timePro === 60) {
+                document.getElementById('bell').play();
+            }
+            if (timeCon === 180) {
+                document.getElementById('bell').play();
+            }
+            if (timeCon === 60) {
+                document.getElementById('bell').play();
+            }
+        }
+
+        function startPro() {
+            if (runningPro) {
+                return;
+            }
+            if (runningCon) {
+                stopTimer();
+            }
+            runningPro = true;
+            document.getElementById('btn_pro').disabled = true;
+            timerInterval = setInterval(() => {
+                if (timePro > 0) {
+                    timePro--;
+                    speakingTimePro--;
+                    updateDisplay();
+                } else {
+                    stopTimer();
+                    document.getElementById('proallover').play();
+                }
+
+                if (speakingTimePro === 12) {
+                    document.getElementById('bell').play();
+                }
+
+                if (speakingTimePro <=0) {
+                    speakingTimePro = 0;
+                    stopTimer();
+                    document.getElementById('proover').play();
+                }
+            }, 1000);
+        }
+
+        function startCon() {
+            if (runningCon) {
+                return;
+            }
+            if (runningPro) {
+                stopTimer();
+            }
+            runningCon = true;
+            document.getElementById('btn_con').disabled = true;
+            timerInterval = setInterval(() => {
+                if (timeCon > 0) {
+                    timeCon--;
+                    speakingTimeCon--;
+                    updateDisplay();
+                } else {
+                    stopTimer();
+                    document.getElementById('conallover').play();
+                }
+
+                if (speakingTimeCon === 12) {
+                    document.getElementById('bell').play();
+                }
+
+                if (speakingTimeCon <=0) {
+                    speakingTimeCon = 0;
+                    stopTimer();
+                    document.getElementById('conover').play();
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            runningPro = false;
+            runningCon = false;
+            document.getElementById('btn_pro').disabled = false;
+            document.getElementById('btn_con').disabled = false;
+            speakingTimePro = 90;
+            speakingTimeCon = 90;
+            updateDisplay();
+        }
+
+        function resetTimer() {
+            stopTimer();
+            timePro = 12 * 60;
+            timeCon = 12 * 60;
+            speakingTimePro = 90;
+            speakingTimeCon = 90;
+            updateDisplay();
+        }
+
+                function previous() {
+            window.location.href = 'debate2-2.html';
+        }
+
+        function next() {
+            window.location.href = 'debate4-1.html';
+        }
+
+        updateDisplay();
+    </script>
+
+    <div id="footer-text">
+        <p>1. 양 측 총 남은 시간이 3분, 1분 남았을 때 종소리가 울립니다.</p>
+        <p>2. 양 측 발언 시간이 10초가 남았을 때 종소리가 울립니다.</p>
+    </div>
+</body>
+</html>
