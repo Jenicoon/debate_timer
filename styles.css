@@ -1,0 +1,17 @@
+.hero {
+    height: 200px; /* 원하는 높이로 조정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
