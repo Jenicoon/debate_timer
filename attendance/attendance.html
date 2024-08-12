@@ -12,29 +12,41 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
-</head>
+    <style>
+        .iframe-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
+        iframe {
+            width: 80%;
+            height: 300px;
+            border: none
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
 
 <body>
     <div class="hero d-flex align-items-center" style="background-color: skyblue;">
         <div class="container d-flex align-items-center text-center">
             <img src="logo.png" alt="토론 이미지" class="img-fluid rounded me-3" style="max-width: 30%; height: auto;">
-                <h1 class="display-4 text-light">한토막 출석현황</h1>
-            </div>
-        </div>     
+            <h1 class="display-4 text-light">한토막 출석현황</h1>
+        </div>
     </div>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS8_vSCNjQ-o0VshgnWymqvrGk_oEz6_brV9Crq_pReUQLw7bebiauNdw4qA5wTeL7XsOEJPFh45s9p/pubhtml?gid=543430399&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-    
-    <button onclick="main()">메인으로</button>
 
-            function main() {
-            window.location.href = 'https://jenicoon.github.io/hantomak/';
-        }
+    <div class="iframe-container">
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS8_vSCNjQ-o0VshgnWymqvrGk_oEz6_brV9Crq_pReUQLw7bebiauNdw4qA5wTeL7XsOEJPFh45s9p/pubhtml?gid=543430399&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+    </div>
 
-    
-    
+    <div class="button-container">
+        <button onclick="window.location.href='https://jenicoon.github.io/hantomak/';" class="btn btn-primary">메인으로</button>
+    </div>
 </body>
-
-    
 
 </html>
