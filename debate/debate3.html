@@ -8,12 +8,6 @@
 </head>
 <body>
     <audio id="bell" src="bell.mp3" preload="auto"></audio>
-    <audio id="proallover" src="proallover.mp3" preload="auto"></audio>
-    <audio id="pro30s" src="pro30s.mp3" preload="auto"></audio>
-    <audio id="proover" src="proover.mp3" preload="auto"></audio>
-    <audio id="conallover" src="conallover.mp3" preload="auto"></audio>
-    <audio id="con30s" src="con30s.mp3" preload="auto"></audio>
-    <audio id="conover" src="conover.mp3" preload="auto"></audio>
     
     <div class="header">
         <img src="logo.png" alt="Logo" class="logo">
@@ -65,19 +59,6 @@
             const minsSpeakingCon = Math.floor(speakingTimeCon / 60);
             const secsSpeakingCon = speakingTimeCon % 60;
             document.getElementById('speaking_time_con').textContent = `${minsSpeakingCon}:${secsSpeakingCon < 10 ? '0' : ''}${secsSpeakingCon}`;
-
-            if (timePro === 180) {
-                document.getElementById('bell').play();
-            }
-            if (timePro === 60) {
-                document.getElementById('bell').play();
-            }
-            if (timeCon === 180) {
-                document.getElementById('bell').play();
-            }
-            if (timeCon === 60) {
-                document.getElementById('bell').play();
-            }
         }
 
         function startPro() {
@@ -96,17 +77,12 @@
                     updateDisplay();
                 } else {
                     stopTimer();
-                    document.getElementById('proallover').play();
-                }
-
-                if (speakingTimePro === 12) {
                     document.getElementById('bell').play();
                 }
-
                 if (speakingTimePro <=0) {
                     speakingTimePro = 0;
                     stopTimer();
-                    document.getElementById('proover').play();
+                    document.getElementById('bell').play();
                 }
             }, 1000);
         }
@@ -127,17 +103,12 @@
                     updateDisplay();
                 } else {
                     stopTimer();
-                    document.getElementById('conallover').play();
-                }
-
-                if (speakingTimeCon === 12) {
                     document.getElementById('bell').play();
                 }
-
                 if (speakingTimeCon <=0) {
                     speakingTimeCon = 0;
                     stopTimer();
-                    document.getElementById('conover').play();
+                    document.getElementById('bell').play();
                 }
             }, 1000);
         }
@@ -162,7 +133,7 @@
             updateDisplay();
         }
 
-                function previous() {
+        function previous() {
             window.location.href = 'debate2-2.html';
         }
 
@@ -174,8 +145,8 @@
     </script>
 
     <div id="footer-text">
-        <p>1. 양 측 총 남은 시간이 3분, 1분 남았을 때 종소리가 울립니다.</p>
-        <p>2. 양 측 발언 시간이 10초가 남았을 때 종소리가 울립니다.</p>
+        <p>1. 양 측 총 남은 시간이 모두 소모되면 종소리가 울립니다.</p>
+        <p>2. 양 측 발언 시간이 모두 소모되면 종소리가 울립니다.</p>
     </div>
 </body>
 </html>

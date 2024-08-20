@@ -8,8 +8,7 @@
 </head>
 <body>
     <audio id="bell" src="bell.mp3" preload="auto"></audio>
-    <audio id="proallover" src="proallover.mp3" preload="auto"></audio>
-    
+
     <div class="header">
         <img src="logo.png" alt="Logo" class="logo">
         <h1>찬성 측 마무리 발언</h1>
@@ -36,11 +35,7 @@
         function updateDisplay() {
             const minsPro = Math.floor(timePro / 60);
             const secsPro = timePro % 60;
-            document.getElementById('total_time_pro').textContent = `${minsPro}:${secsPro < 10 ? '0' : ''}${secsPro}`;
-
-            if (timePro === 60) {
-                document.getElementById('bell').play();
-            }
+            document.getElementById('total_time_pro').textContent = `${minsPro}:${secsPro < 10 ? '0' : ''}${secsPro}`
         }
 
         function startPro() {
@@ -55,7 +50,7 @@
                     updateDisplay();
                 } else {
                     stopTimer();
-                    document.getElementById('proallover').play();
+                    document.getElementById('bell').play();
                 }
             }, 1000);
         }
@@ -85,7 +80,7 @@
     </script>
 
     <div id="footer-text">
-        <p>1. 남은 시간이 1분 남았을 시에 종소리가 울립니다.</p>
+        <p>모든 시간이 소모되면 종소리가 울립니다.</p>
     </div>
 </body>
 </html>
