@@ -6,3 +6,9 @@
     position: relative;
     margin-bottom: 50px;
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
