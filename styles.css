@@ -7,6 +7,11 @@
     margin-bottom: 50px;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
 
 .card {
     transition: transform 0.3s ease;
