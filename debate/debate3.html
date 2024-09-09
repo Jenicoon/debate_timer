@@ -113,6 +113,17 @@
             }, 1000);
         }
 
+        document.addEventListener("keydown", function(event) {
+            switch(event.key) {
+                case "ArrowLeft":
+                    document.getElementById("btn_pro").click();
+                    break;
+                case "ArrowRight":
+                    document.getElementById("btn_con").click();
+                    break;
+            }
+        });
+
         function stopTimer() {
             clearInterval(timerInterval);
             runningPro = false;
@@ -145,6 +156,7 @@
     </script>
 
     <div id="footer-text">
+        <p>1. 왼쪽 방향키 = 찬성 / 오른쪽 방향키 = 반대</p>
         <p>1. 양 측 총 남은 시간이 모두 소모되면 종소리가 울립니다.</p>
         <p>2. 양 측 발언 시간이 모두 소모되면 종소리가 울립니다.</p>
     </div>
