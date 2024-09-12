@@ -228,11 +228,11 @@ button:disabled {
         -webkit-transform: rotate(-180deg);
     }
     50.01% {
-        background: skyBlue;
+        background: rgb(250, 86, 86);
         -webkit-transform: rotate(0deg);
     }
     100% {
-        background: skyBlue;
+        background: rgb(250, 86, 86);
         -webkit-transform: rotate(-180deg);
     }
 }
