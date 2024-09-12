@@ -18,7 +18,10 @@
     <div class="container">
         <div class="time con" id="time_con">
             <div class="title">반대 측 1번 토론자</div>
-            <div class="time-info">총 남은 시간<br><span id="total_time_pro">2:00</span></div>
+            <div class="timer_con" id="timer">
+                <div class="mask"></div>
+            </div>
+            <div class="time-info"><span id="total_time_pro">2:00</span></div>
         </div>
     </div>
     <button onclick="previous()">이전</button>
@@ -37,20 +40,25 @@
             const secsPro = timePro % 60;
             document.getElementById('total_time_pro').textContent = `${minsPro}:${secsPro < 10 ? '0' : ''}${secsPro}`;
         }
-
         function startPro() {
             if (runningPro) {
                 return;
             }
             runningPro = true;
             document.getElementById('btn_pro').disabled = true;
+        
+            document.getElementById('timer').style.animationPlayState = 'running';
+            document.querySelector('.mask').style.animationPlayState = 'running';
+
             timerInterval = setInterval(() => {
-                if (timePro > 0) {
+                if (timePro > 1) {
                     timePro--;
                     updateDisplay();
                 } else {
-                    stopTimer();
                     document.getElementById('bell').play();
+                    timePro--;
+                    updateDisplay();
+                    stopTimer();
                 }
             }, 1000);
         }
@@ -59,13 +67,27 @@
             clearInterval(timerInterval);
             runningPro = false;
             document.getElementById('btn_pro').disabled = false;
+
+            document.getElementById('timer').style.animationPlayState = 'paused';
+            document.querySelector('.mask').style.animationPlayState = 'paused';
             updateDisplay();
         }
 
         function resetTimer() {
             stopTimer();
-            timePro = 2 * 60;
+            timePro = 120;
             updateDisplay();
+
+            const timerElement = document.getElementById('timer');
+            const maskElement = document.querySelector('.mask');
+    
+            timerElement.style.animation = 'none';
+            maskElement.style.animation = 'none';
+  
+            setTimeout(() => {
+                timerElement.style.animation = '';
+                maskElement.style.animation = '';
+            }, 1);
         }
 
         function previous() {

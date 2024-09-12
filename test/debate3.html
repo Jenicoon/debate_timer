@@ -18,12 +18,12 @@
     <div class="container">
         <div class="time pro" id="time_pro">
             <div class="title">찬성</div>
-            <div class="time-info">총 남은 시간<br><span id="total_time_pro">7:30</span></div>
+            <div class="time-info">총 남은 시간<br><span id="total_time_pro">1:40</span></div>
             <div class="time-info">발언 시간<br><span id="speaking_time_pro">1:30</span></div>
         </div>
         <div class="time con" id="time_con">
             <div class="title">반대</div>
-            <div class="time-info">총 남은 시간<br><span id="total_time_con">7:30</span></div>
+            <div class="time-info">총 남은 시간<br><span id="total_time_con">1:40</span></div>
             <div class="time-info">발언 시간<br><span id="speaking_time_con">1:30</span></div>
         </div>
     </div>
@@ -35,13 +35,15 @@
     <button onclick="next()">다음</button>
 
     <script>
-        let timePro = 450;
-        let timeCon = 450;
+        let timePro = 100;
+        let timeCon = 100;
         let speakingTimePro = 90;
         let speakingTimeCon = 90;
         let timerInterval;
         let runningPro = false;
         let runningCon = false;
+        let timeProExceeded = false;
+        let timeConExceeded = false;
 
         function updateDisplay() {
             const minsPro = Math.floor(timePro / 60);
@@ -70,6 +72,9 @@
             }
             runningPro = true;
             document.getElementById('btn_pro').disabled = true;
+            if (timeProExceeded && timePro <= 90) {
+                speakingTimePro = timePro;
+            }
             timerInterval = setInterval(() => {
                 if (timePro > 0) {
                     timePro--;
@@ -84,6 +89,9 @@
                     stopTimer();
                     document.getElementById('bell').play();
                 }
+                if (timePro <= 90 && !timeProExceeded) {
+                timeProExceeded = true;
+                }
             }, 1000);
         }
 
@@ -96,6 +104,9 @@
             }
             runningCon = true;
             document.getElementById('btn_con').disabled = true;
+            if (timeConExceeded && timeCon <= 90) {
+                speakingTimeCon = timeCon;
+            }
             timerInterval = setInterval(() => {
                 if (timeCon > 0) {
                     timeCon--;
@@ -109,6 +120,9 @@
                     speakingTimeCon = 0;
                     stopTimer();
                     document.getElementById('bell').play();
+                }
+                if (timeCon <= 90 && !timeConExceeded) {
+                timeConExceeded = true;
                 }
             }, 1000);
         }
@@ -151,10 +165,12 @@
 
         function resetTimer() {
             stopTimer();
-            timePro = 450;
-            timeCon = 450;
+            timePro = 100;
+            timeCon = 100;
             speakingTimePro = 90;
             speakingTimeCon = 90;
+            timeProExceeded = false;
+            timeConExceeded = false;
             updateDisplay();
         }
 
