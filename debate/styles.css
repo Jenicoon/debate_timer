@@ -213,7 +213,7 @@ button:disabled {
     position: absolute;
     top: 0;
     width: 50%;
-    animation-name: mask;
+    animation-name: mask_ceda;
     animation-duration: 240s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
