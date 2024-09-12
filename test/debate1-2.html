@@ -19,7 +19,7 @@
         <div class="time con" id="time_con">
             <div class="title">반대 측 1번 토론자</div>
             <div class="timer_con" id="timer">
-                <div class="mask"></div>
+                <div class="mask_ceda"></div>
             </div>
             <div class="time-info"><span id="total_time_pro">2:00</span></div>
         </div>
@@ -48,7 +48,7 @@
             document.getElementById('btn_pro').disabled = true;
         
             document.getElementById('timer').style.animationPlayState = 'running';
-            document.querySelector('.mask').style.animationPlayState = 'running';
+            document.querySelector('.mask_ceda').style.animationPlayState = 'running';
 
             timerInterval = setInterval(() => {
                 if (timePro > 1) {
@@ -69,7 +69,7 @@
             document.getElementById('btn_pro').disabled = false;
 
             document.getElementById('timer').style.animationPlayState = 'paused';
-            document.querySelector('.mask').style.animationPlayState = 'paused';
+            document.querySelector('.mask_ceda').style.animationPlayState = 'paused';
             updateDisplay();
         }
 
@@ -79,7 +79,7 @@
             updateDisplay();
 
             const timerElement = document.getElementById('timer');
-            const maskElement = document.querySelector('.mask');
+            const maskElement = document.querySelector('.mask_ceda');
     
             timerElement.style.animation = 'none';
             maskElement.style.animation = 'none';
