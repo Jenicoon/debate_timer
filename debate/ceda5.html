@@ -31,7 +31,7 @@
     <button onclick="next()">다음</button>
 
     <script>
-        let timePro = 4 * 60;
+        let timePro = 240;
         let timerInterval;
         let runningPro = false;
 
@@ -74,7 +74,7 @@
 
         function resetTimer() {
             stopTimer();
-            timePro = 4 * 60;
+            timePro = 240;
             updateDisplay();
             const timerElement = document.getElementById('timer');
             const maskElement = document.querySelector('.mask_ceda');
