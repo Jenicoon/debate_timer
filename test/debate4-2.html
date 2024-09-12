@@ -19,7 +19,7 @@
         <div class="time pro" id="time_pro">
             <div class="title">찬성 측 3번 토론자</div>
             <div class="timer_pro" id="timer">
-                <div class="mask"></div>
+                <div class="mask2p"></div>
             </div>
             <div class="time-info"><span id="total_time_pro">2:00</span></div>
         </div>
@@ -48,7 +48,7 @@
             document.getElementById('btn_pro').disabled = true;
         
             document.getElementById('timer').style.animationPlayState = 'running';
-            document.querySelector('.mask').style.animationPlayState = 'running';
+            document.querySelector('.mask2p').style.animationPlayState = 'running';
 
             timerInterval = setInterval(() => {
                 if (timePro > 1) {
@@ -69,7 +69,7 @@
             document.getElementById('btn_pro').disabled = false;
 
             document.getElementById('timer').style.animationPlayState = 'paused';
-            document.querySelector('.mask').style.animationPlayState = 'paused';
+            document.querySelector('.mask2p').style.animationPlayState = 'paused';
             updateDisplay();
         }
 
@@ -79,7 +79,7 @@
             updateDisplay();
 
             const timerElement = document.getElementById('timer');
-            const maskElement = document.querySelector('.mask');
+            const maskElement = document.querySelector('.mask2p');
     
             timerElement.style.animation = 'none';
             maskElement.style.animation = 'none';
