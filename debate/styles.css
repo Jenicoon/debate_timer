@@ -247,7 +247,7 @@ button:disabled {
     position: absolute;
     top: 0;
     width: 50%;
-    animation-name: mask3c;
+    animation-name: mask3p;
     animation-duration: 180s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -256,7 +256,7 @@ button:disabled {
 }
 
 }
-@-webkit-keyframes mask3c {
+@-webkit-keyframes mask3p {
     0% {
         background: #eee;
         -webkit-transform: rotate(0deg);
