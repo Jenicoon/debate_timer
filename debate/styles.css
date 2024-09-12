@@ -166,14 +166,14 @@ button:disabled {
     animation-iteration-count: infinite;
     animation-play-state: paused;
 }
-.mask {
+.mask3p {
     border-radius: 100% 0 0 100% / 50% 0 0 50%;
     height: 100%;
     left: 0;
     position: absolute;
     top: 0;
     width: 50%;
-    animation-name: mask;
+    animation-name: mask3p;
     animation-duration: 180s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -187,7 +187,7 @@ button:disabled {
         -webkit-transform: rotate(360deg);
     }
 }
-@-webkit-keyframes mask {
+@-webkit-keyframes mask3p {
     0% {
         background: #eee;
         -webkit-transform: rotate(0deg);
@@ -206,26 +206,92 @@ button:disabled {
     }
 }
 
-.mask_ceda {
+.mask4p {
     border-radius: 100% 0 0 100% / 50% 0 0 50%;
     height: 100%;
     left: 0;
     position: absolute;
     top: 0;
     width: 50%;
-    animation-name: mask_ceda;
+    animation-name: mask4p;
     animation-duration: 240s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     -webkit-transform-origin: 100% 50%;
     animation-play-state: paused;
 }
-@-webkit-keyframes time {
+
+@-webkit-keyframes mask4p {
+    0% {
+        background: #eee;
+        -webkit-transform: rotate(0deg);
+    }
+    50% {
+        background: #eee;
+        -webkit-transform: rotate(-180deg);
+    }
+    50.01% {
+        background: skyBlue;
+        -webkit-transform: rotate(0deg);
+    }
     100% {
-        -webkit-transform: rotate(360deg);
+        background: skyBlue;
+        -webkit-transform: rotate(-180deg);
     }
 }
-@-webkit-keyframes mask_ceda {
+
+.mask3c {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    animation-name: mask3c;
+    animation-duration: 180s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-transform-origin: 100% 50%;
+    animation-play-state: paused;
+}
+
+}
+@-webkit-keyframes mask3c {
+    0% {
+        background: #eee;
+        -webkit-transform: rotate(0deg);
+    }
+    50% {
+        background: #eee;
+        -webkit-transform: rotate(-180deg);
+    }
+    50.01% {
+        background: rgb(250, 86, 86);
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        background: rgb(250, 86, 86);
+        -webkit-transform: rotate(-180deg);
+    }
+}
+
+.mask4c {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    animation-name: mask4c;
+    animation-duration: 240s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-transform-origin: 100% 50%;
+    animation-play-state: paused;
+}
+
+}
+@-webkit-keyframes mask4c {
     0% {
         background: #eee;
         -webkit-transform: rotate(0deg);
