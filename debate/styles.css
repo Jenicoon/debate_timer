@@ -180,6 +180,20 @@ button:disabled {
     -webkit-transform-origin: 100% 50%;
     animation-play-state: paused; /* 기본 상태: 정지 */
 }
+.mask_ceda {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    animation-name: mask;
+    animation-duration: 240s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-transform-origin: 100% 50%;
+    animation-play-state: paused; /* 기본 상태: 정지 */
+}
 
 @-webkit-keyframes time {
     100% {
