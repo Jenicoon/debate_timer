@@ -228,6 +228,7 @@ button:disabled {
         -webkit-transform: rotate(360deg);
     }
 }
+
 @-webkit-keyframes mask3p {
     0% {
         background: #eee;
@@ -266,7 +267,6 @@ button:disabled {
     }
 }
 
-}
 @-webkit-keyframes mask3c {
     0% {
         background: #eee;
@@ -286,7 +286,6 @@ button:disabled {
     }
 }
 
-}
 @-webkit-keyframes mask4c {
     0% {
         background: #eee;
