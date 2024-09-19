@@ -158,6 +158,22 @@ button:disabled {
     animation-play-state: paused;
 }
 
+.mask2c {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    animation-name: mask2c;
+    animation-duration: 120s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-transform-origin: 100% 50%;
+    animation-play-state: paused;
+}
+
+
 
 @-webkit-keyframes time {
     100% {
@@ -182,20 +198,6 @@ button:disabled {
         -webkit-transform: rotate(-180deg);
     }
 }
-.mask2c {
-    border-radius: 100% 0 0 100% / 50% 0 0 50%;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 50%;
-    animation-name: mask2c;
-    animation-duration: 120s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    -webkit-transform-origin: 100% 50%;
-    animation-play-state: paused;
-}
 
 }
 @-webkit-keyframes mask2c {
@@ -216,3 +218,5 @@ button:disabled {
         -webkit-transform: rotate(-180deg);
     }
 }
+
+
