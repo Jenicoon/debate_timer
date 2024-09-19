@@ -29,3 +29,14 @@ document.getElementById('overlaylog').onclick = function() {
     document.getElementById('openlog').style.display = 'none';
     document.getElementById('overlaylog').style.display = 'none';
 };
+
+document.getElementById('downloadfeedback').addEventListener('click', function() {
+    const fileUrl = '한토막 피드백 양식 단일화.docx';
+    
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = '한토막 피드백 양식 단일화.docx';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
