@@ -150,7 +150,7 @@ button:disabled {
     position: absolute;
     top: 0;
     width: 50%;
-    animation-name: mask3p;
+    animation-name: mask2p;
     animation-duration: 120s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -164,7 +164,7 @@ button:disabled {
     position: absolute;
     top: 0;
     width: 50%;
-    animation-name: mask3c;
+    animation-name: mask2c;
     animation-duration: 120s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
