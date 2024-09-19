@@ -12,14 +12,19 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 
 
 <body>
-    <div class="hero d-flex align-items-center" style="background-color: skyblue;">
+    <div class="hero d-flex align-items-center">
         <div class="container d-flex align-items-center text-center">
-            <img src="logo.png" alt="토론 이미지" class="img-fluid rounded me-3" style="max-width: 30%; height: auto;">
-                <h1 class="display-4 text-light">한양대학교 토론 동아리 한토막</h1>
+            <img src="logo.png" alt="토론 이미지" class="logo rounded me-3">
+                <h1 class="display-4">
+                    <span style="color: #a8bffcc7; font-weight:bold;">한</span>양, <span style="color: #a8bffcc7; font-weight:bold;">토</span>론의 <span style="color: #a8bffcc7; font-weight:bold;">막</span>을 올리다
+                </h1>
+                    
+                </h1>
             </div>
         </div>     
     </div>
@@ -27,37 +32,37 @@
 
     <div class="container mt-5">
         <div class="row">
-            <button class="btn btn-secondary btn-lg" id="updatelog">업데이트 로그</button>
             <div class="col-md-4">
-                <div class="card">
-                    <img src="출석체크.png" class="card-img-top mx-auto d-block" alt="attendance" style="max-width: 100%; height: auto;">
+                <div class="card text-center">
+                    <img src="출석체크.png" class="card-img-top mx-auto d-block" alt="attendance" style="max-width: 90%; height: auto;">
                     <div class="card-body">
                         <h5 class="card-title">출석체크</h5>
-                        <p class="card-text">출석 현황 반영에 약 10분 정도 소요되니 한 번만 입력해주세요.</p>
-                        <button class="btn btn-primary btn-lg" onclick="location.href='attendance/attendance.html'">출석현황</button>
-                        <button class="btn btn-secondary btn-lg" onclick="location.href='https://forms.gle/WNeJpCFLfK6gA2Ng9'">출석하기</button>
-                        <button class="btn btn-secondary btn-lg" id="showImageButton">QR</button>
+                        <p class="card-text">출석 반영에 약 5분 정도 소요되니<br>
+                            한 번만 입력해주세요.</p>
+                        <button class="btn_1 btn-lg" onclick="location.href='attendance/attendance.html'">출석현황</button>
+                        <button class="btn_2 btn-lg" onclick="location.href='https://forms.gle/WNeJpCFLfK6gA2Ng9'">출석하기</button>
+                        <button class="btn_2 btn-lg" id="showImageButton">QR</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <div class="card text-center">
                     <img src="clock.jpg" class="card-img-top mx-auto d-block" alt="timer" style="max-width: 70%; height: auto;">
                     <div class="card-body">
                         <h5 class="card-title">토론</h5>
                         <p class="card-text">토론 타이머입니다.</p>
-                        <button class="btn btn-primary btn-lg" onclick="location.href='debate/debate_main.html'">타이머</button>
-                        <button class="btn btn-primary btn-lg" onclick="location.href='test/debate1-1.html'">축약</button>
+                        <button class="btn_1 btn-lg" onclick="location.href='debate/debate_main.html'">타이머</button>
+                        <button class="btn_1 btn-lg" onclick="location.href='test/debate1-1.html'">축약</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4"> 
-                <div class="card">
-                    <img src="cafe.png" class="card-img-top mx-auto d-block" alt="attendance" style="max-width: 60%; height: auto;"> <!-- 최대 너비 100%로 조정 -->
+                <div class="card text-center">
+                    <img src="cafe.png" class="card-img-top mx-auto d-block" alt="attendance" style="max-width: 72%; height: auto;">
                     <div class="card-body">
                         <h5 class="card-title">네이버 카페</h5>
                         <p class="card-text">한토막 공식 네이버 카페입니다.</p>
-                        <button class="btn btn-primary btn-lg" onclick="location.href='https://cafe.naver.com/hantomakcafe'">네이버 카페</button>
+                        <button class="btn_1 btn-lg" onclick="window.open('https://cafe.naver.com/hantomakcafe', '_blank')">네이버 카페</button>
                     </div>
                 </div>
             </div>
@@ -67,62 +72,53 @@
                 <span id="closePopup" style="cursor: pointer; float: right; font-size: 20px;">&times;</span>
                 <img src="출석QR.png" alt="출석QR" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
             </div>
-
-            <div id="openlog" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 20px; text-align: center;">
-                <span id="closelog" style="cursor: pointer; float: right; font-size: 20px;">&times;</span>
-                <div id="footer-text">
-                    <p>v1.0 (2024-09-12 업데이트)<br>
-                        1. 시계 모양의 타이머가 적용되어 남은 시간을 한 눈에 파악할 수 있도록 하였습니다.<br>
-                        2. 반토막의 자유토론을 제외한 타이머에서 '총 남은 시간' 글자를 삭제하였습니다.<br>
-                        3. 남은 시간 숫자의 크기를 키워 보기 쉽게 하였습니다.
-                    </p>
-                </div>
+            <div class="calendar">
+                <iframe src="https://calendar.google.com/calendar/embed?src=wotjddlclsrn%40gmail.com&ctz=Asia%2FSeoul" 
+                        style="border: 0" width="1200" height="600" frameborder="0" scrolling="no"></iframe>
             </div>
-            
-            <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
-            <div id="overlaylog" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
-
-            <script>
-                document.getElementById('showImageButton').onclick = function() {
-                    document.getElementById('imagePopup').style.display = 'block';
-                    document.getElementById('overlay').style.display = 'block';
-                };
-
-                document.getElementById('closePopup').onclick = function() {
-                    document.getElementById('imagePopup').style.display = 'none';
-                    document.getElementById('overlay').style.display = 'none';
-                };
-
-
-                document.getElementById('overlay').onclick = function() {
-                    document.getElementById('imagePopup').style.display = 'none';
-                    document.getElementById('overlay').style.display = 'none';
-                };
-
-                document.getElementById('updatelog').onclick = function() {
-                    document.getElementById('openlog').style.display = 'block';
-                    document.getElementById('overlaylog').style.display = 'block';
-                };
-
-                document.getElementById('closelog').onclick = function() {
-                    document.getElementById('openlog').style.display = 'none';
-                    document.getElementById('overlaylog').style.display = 'none';
-                };
-
-
-                document.getElementById('overlaylog').onclick = function() {
-                    document.getElementById('openlog').style.display = 'none';
-                    document.getElementById('overlaylog').style.display = 'none';
-                };
-            </script>
-        <iframe src="https://calendar.google.com/calendar/embed?src=wotjddlclsrn%40gmail.com&ctz=Asia%2FSeoul" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
-        <div id="footer-text">
-        <p>문의 및 오류사항은 dndckssla12@hanyang.ac.kr로 남겨주세요.<br>
-            v1.0 (2024-09-12)<br>
+    </div>
+
+    <div id="footer-text">
+        <p>한양, 토론의 막을 올리다
+            <a href="https://www.instagram.com/hantomak.official/" target="_blank">
+                <img src="instagram.png" alt="설명" style="max-width: 30px; height: auto; margin-left: 20px;"><br>
+            </a>
+            <br>
+            30기 대표: 29기 이건호<br>
+            30기 부대표: 28기 권민주<br>
+            <br>
+            주소: 서울특별시 성동구 왕십리로 222 한양대학교 서울캠퍼스 대운동장 지하1층 한토막 동아리실<br>
+            문의: wotjddlclsrn@gmail.com<br>
+            번호: 010-2685-5535<br>
+            <br>
+            <hr>
+            <span>v1.1 (2024-09-19)</span>
+            <button id="updatelog" >업데이트 로그(클릭)</button><br>
+            사이트 문의: dndckssla12@hanyang.ac.kr<br>
             Copyright 2024. 이승하 All rights reserved.
         </p>
+        <div id="openlog" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: none; border: none; box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); z-index: 1000; text-align: center; font-size: 1.5em;">
+            <span id="closelog" style="cursor: pointer; float: right; font-size: 20px;">&times;</span>
+            <div id="footer-text">
+                <p>v.1.1 (2024-09-19 업데이트)<br>
+                    1. 상단 배경 및 글씨 색깔을 변경하였습니다.<br>
+                    2. 네이버 카페 사진을 변경하였습니다.<br>
+                    3. 버튼 색깔 및 크기를 조정하였습니다.<br>
+                    4. 하단 색을 넣어 구분하였습니다.<br>
+                    5. 하단 동아리 정보 및 문의처를 업데이트 하였습니다.<br>
+                    6. 하단 인스타그램 링크를 추가하였습니다.<br>
+                    <br>
+                    v1.0 (2024-09-12 업데이트)<br>
+                    1. 시계 모양의 타이머가 적용되어 남은 시간을 한 눈에 파악할 수 있도록 하였습니다.<br>
+                    2. 반토막의 자유토론을 제외한 타이머에서 '총 남은 시간' 글자를 삭제하였습니다.<br>
+                    3. 남은 시간 숫자의 크기를 키워 보기 쉽게 하였습니다.
+                </p>
+            </div>
         </div>
+        
+        <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+        <div id="overlaylog" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
     </div>
 </body>
 
