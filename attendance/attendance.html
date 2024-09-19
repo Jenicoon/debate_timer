@@ -21,6 +21,7 @@
     justify-content: center;
     position: relative;
     margin-bottom: 50px;
+    background: linear-gradient(to right, rgb(136, 150, 156), rgb(70, 90, 100), rgb(50, 70, 90));
 }
 
 .iframe-container {
@@ -39,13 +40,31 @@ iframe {
     text-align: center;
     margin-top: 20px;
 }
+
+.logo {
+    max-width: 30%;
+    height: auto;
+}
+
+.btn_1 {
+    background-color: rgb(65, 101, 249);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px;
+    font-size: 1.0rem; 
+    border-radius: 10px;
+}
+
+.btn_1:hover{
+    background-color: rgb(140, 154, 156);
+}
 </style>
 
 <body>
     <div class="hero d-flex align-items-center" style="background-color: skyblue;">
         <div class="container d-flex align-items-center text-center">
-            <img src="logo.png" alt="토론 이미지" class="img-fluid rounded me-3" style="max-width: 30%; height: auto;">
-            <h1 class="display-4 text-light">한토막 출석현황</h1>
+            <img src="logo.png" alt="토론 이미지" class="logo rounded me-3">
+            <h1 class="display-4 text-light">출석현황</h1>
         </div>
     </div>
 
@@ -54,7 +73,7 @@ iframe {
     </div>
 
     <div class="button-container">
-        <button onclick="window.location.href='https://jenicoon.github.io/hantomak/';" class="btn btn-primary">메인으로</button>
+        <button onclick="window.location.href='https://jenicoon.github.io/hantomak/';" class="btn_1">메인으로</button>
     </div>
 </body>
 
