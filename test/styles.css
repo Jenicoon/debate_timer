@@ -125,7 +125,7 @@ button:disabled {
     position: relative;
     width: 250px;
     animation-name: time;
-    animation-duration: 100s;
+    animation-duration: 120s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: paused;
@@ -137,7 +137,7 @@ button:disabled {
     position: relative;
     width: 250px;
     animation-name: time;
-    animation-duration: 100s;
+    animation-duration: 120s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: paused;
@@ -150,14 +150,13 @@ button:disabled {
     position: absolute;
     top: 0;
     width: 50%;
-    animation-name: mask2p;
-    animation-duration: 100s;
+    animation-name: mask3p;
+    animation-duration: 120s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     -webkit-transform-origin: 100% 50%;
     animation-play-state: paused;
 }
-
 .mask2c {
     border-radius: 100% 0 0 100% / 50% 0 0 50%;
     height: 100%;
@@ -165,21 +164,20 @@ button:disabled {
     position: absolute;
     top: 0;
     width: 50%;
-    animation-name: mask2c;
-    animation-duration: 100s;
+    animation-name: mask3c;
+    animation-duration: 120s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     -webkit-transform-origin: 100% 50%;
     animation-play-state: paused;
 }
 
-
-
 @-webkit-keyframes time {
     100% {
         -webkit-transform: rotate(360deg);
     }
 }
+
 @-webkit-keyframes mask2p {
     0% {
         background: #eee;
@@ -199,7 +197,6 @@ button:disabled {
     }
 }
 
-}
 @-webkit-keyframes mask2c {
     0% {
         background: #eee;
@@ -218,5 +215,3 @@ button:disabled {
         -webkit-transform: rotate(-180deg);
     }
 }
-
-
