@@ -23,13 +23,23 @@
     color: white;
 }
 
+.col-md-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .card {
     transition: transform 0.3s ease;
     height: 100%;
+    width: 100%;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    opacity: 0.9;
+    margin: 10px;
 }
 
 .card:hover {
