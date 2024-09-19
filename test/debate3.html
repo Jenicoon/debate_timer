@@ -42,8 +42,6 @@
         let timerInterval;
         let runningPro = false;
         let runningCon = false;
-        let timeProExceeded = false;
-        let timeConExceeded = false;
 
         function updateDisplay() {
             const minsPro = Math.floor(timePro / 60);
@@ -72,9 +70,6 @@
             }
             runningPro = true;
             document.getElementById('btn_pro').disabled = true;
-            if (timeProExceeded && timePro <= 90) {
-                speakingTimePro = timePro;
-            }
             timerInterval = setInterval(() => {
                 if (timePro > 0) {
                     timePro--;
@@ -89,9 +84,6 @@
                     stopTimer();
                     document.getElementById('bell').play();
                 }
-                if (timePro <= 90 && !timeProExceeded) {
-                timeProExceeded = true;
-                }
             }, 1000);
         }
 
@@ -104,9 +96,6 @@
             }
             runningCon = true;
             document.getElementById('btn_con').disabled = true;
-            if (timeConExceeded && timeCon <= 90) {
-                speakingTimeCon = timeCon;
-            }
             timerInterval = setInterval(() => {
                 if (timeCon > 0) {
                     timeCon--;
@@ -120,9 +109,6 @@
                     speakingTimeCon = 0;
                     stopTimer();
                     document.getElementById('bell').play();
-                }
-                if (timeCon <= 90 && !timeConExceeded) {
-                timeConExceeded = true;
                 }
             }, 1000);
         }
@@ -169,8 +155,6 @@
             timeCon = 100;
             speakingTimePro = 90;
             speakingTimeCon = 90;
-            timeProExceeded = false;
-            timeConExceeded = false;
             updateDisplay();
         }
 
@@ -187,8 +171,8 @@
 
     <div id="footer-text">
         <p>1. 왼쪽 방향키 = 찬성 / 오른쪽 방향키 = 반대</p>
-        <p>2. 양 측 총 남은 시간이 모두 소모되면 종소리가 울립니다.</p>
-        <p>3. 양 측 발언 시간이 모두 소모되면 종소리가 울립니다.</p>
+        <p>1. 양 측 총 남은 시간이 모두 소모되면 종소리가 울립니다.</p>
+        <p>2. 양 측 발언 시간이 모두 소모되면 종소리가 울립니다.</p>
     </div>
 </body>
 </html>
