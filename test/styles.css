@@ -125,7 +125,7 @@ button:disabled {
     position: relative;
     width: 250px;
     animation-name: time;
-    animation-duration: 120s;
+    animation-duration: 100s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: paused;
@@ -137,7 +137,7 @@ button:disabled {
     position: relative;
     width: 250px;
     animation-name: time;
-    animation-duration: 120s;
+    animation-duration: 100s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: paused;
@@ -151,7 +151,7 @@ button:disabled {
     top: 0;
     width: 50%;
     animation-name: mask2p;
-    animation-duration: 120s;
+    animation-duration: 100s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     -webkit-transform-origin: 100% 50%;
@@ -166,7 +166,7 @@ button:disabled {
     top: 0;
     width: 50%;
     animation-name: mask2c;
-    animation-duration: 120s;
+    animation-duration: 100s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     -webkit-transform-origin: 100% 50%;
