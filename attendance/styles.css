@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "chosunsm";
+    src: url("ChosunSm.TTF");
+    font-display: swap;
+  }
+
+.display-4 {
+    font-family: 'chosunsm', serif !important;
+}
+
+.hero {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 50px;
+    background: linear-gradient(to right,#ffffff, #bed7f5, #d8e9fb, #bed7f5, #ffffff);
+}
+
+.iframe-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+iframe {
+    width: 80%;
+    height: 600px;
+    border: none
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logo {
+    max-width: 12%;
+    height: auto;
+    margin-left: 55px;
+}
+
+.btn_1 {
+    background-color: rgb(65, 101, 249);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px;
+    font-size: 1.0rem; 
+    border-radius: 10px;
+}
+
+.btn_1:hover{
+    background-color: rgb(140, 154, 156);
+}
+
+.hanyang {
+    max-width: 12%;
+    height: auto;
+    margin-right: 55px;
+}

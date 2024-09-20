@@ -34,8 +34,14 @@ body {
     margin-right: 55px;
 }
 
+@font-face {
+    font-family: "chosunsm";
+    src: url("ChosunSm.TTF");
+    font-display: swap;
+  }
+
 .display-4 {
-    color: white;
+    font-family: 'chosunsm', serif !important;
 }
 
 .col-md-4 {
@@ -95,7 +101,8 @@ body {
 .calendar {
     max-width: 1200px;
     margin: auto;
-    border-radius: 10px;
+    display: flex;
+    justify-content: center;
     box-shadow: 0 100px 100px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     opacity: 0.92;
